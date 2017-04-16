@@ -1,0 +1,24 @@
+{
+  "name": "iron-mask",
+  "version": "1.0.0",
+  "description": "A flexible way to mask sensitive data",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava 'test/**/*.spec.js'",
+    "lint": "eslint 'src/**/*.js' 'src/**/*.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.23.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
