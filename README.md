@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/vitorabner/iron-mask/master.svg?style=flat)](https://travis-ci.org/vitorabner/iron-mask)
+[![Build Status](https://img.shields.io/travis/vitorabner/iron-mask/master.svg?style=flat)](https://travis-ci.org/vitorabner/iron-mask) [![Coverage Status](https://coveralls.io/repos/github/vitorabner/iron-mask/badge.svg?branch=feature%2Fadd-coverage)](https://coveralls.io/github/vitorabner/iron-mask?branch=feature%2Fadd-coverage)
 
 ![IronMask Logo](http://ec2-52-67-128-55.sa-east-1.compute.amazonaws.com/assets/textures/iron-mask-texture.png)
 
