@@ -4,8 +4,9 @@
   "description": "A flexible way to mask sensitive data",
   "main": "src/iron-mask.js",
   "scripts": {
-    "test": "ava 'test/**/*.spec.js'",
-    "lint": "eslint 'src/**/*.js' 'src/**/*.js'"
+    "test": "nyc ava 'test/**/*.spec.js'",
+    "lint": "eslint 'src/**/*.js' 'src/**/*.js'",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Vitor Abner <vitorabner@gmail.com>",
   "license": "MIT",
@@ -14,11 +15,13 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "nyc": "^10.2.0"
   }
 }
