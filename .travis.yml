@@ -3,4 +3,4 @@ node_js:
   - stable
 
 before_script:
-  - ./node_modules/.bin/eslint 'src/**/*.js'
+  - ./node_modules/.bin/eslint 'src/**/*.js' 'test/**/*.js'
