@@ -1,6 +1,6 @@
 {
   "name": "iron-mask",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A flexible way to mask sensitive data",
   "main": "src/iron-mask.js",
   "scripts": {
