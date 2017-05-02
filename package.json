@@ -4,7 +4,7 @@
   "description": "A flexible way to mask sensitive data",
   "main": "src/iron-mask.js",
   "scripts": {
-    "test": "nyc ava 'test/**/*.spec.js'",
+    "test": "nyc ava 'test/**/*.js'",
     "lint": "eslint 'src/**/*.js' 'src/**/*.js'",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
