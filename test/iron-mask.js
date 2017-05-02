@@ -1,4 +1,3 @@
-const R = require('ramda')
 const { test } = require('ava')
 const ironMask = require('../src/iron-mask')
 
@@ -12,10 +11,10 @@ test('ironMask: using a string as regex', t => {
   })
 
   const object = { name: 'Vitor Abner' }
-  
+
   const maskedObject = mask(object)
-  
-  t.deepEqual(maskedObject, {name: 'Batman' })
+
+  t.deepEqual(maskedObject, { name: 'Batman' })
 })
 
 test('ironMask: mask url using a replacer function', t => {
@@ -37,7 +36,7 @@ test('ironMask: mask url using a replacer function', t => {
   const maskedObject = mask(object)
 
   t.deepEqual(maskedObject, {
-    url: "/game?session=01234*****",
+    url: '/game?session=01234*****',
     save: {
       url: '/save?session:01234*****'
     }
@@ -53,7 +52,7 @@ test('ironMask: mask password with a regex', t => {
     }
   })
 
-  const object = { password: 'Papyrus' }  
+  const object = { password: 'Papyrus' }
   const maskedObject = mask(object)
   t.deepEqual(maskedObject, { password: '*' })
 })
@@ -66,7 +65,7 @@ test('ironMask: mask password from an object without this property', t => {
       replacer: '*'
     }
   })
-  
+
   const object = { name: 'Pagar.me', library: 'Papyrus' }
   const maskedObject = mask(object)
   t.deepEqual(maskedObject, object)
@@ -92,14 +91,14 @@ test('ironMask: mask password value in differents paths', t => {
   }
 
   const maskedObject = mask(object)
-  
-  t.deepEqual(maskedObject, { 
-    password: '*', 
+
+  t.deepEqual(maskedObject, {
+    password: '*',
     user: {
-      password: '*',
+      password: '*'
     },
     creditCard: {
-      password: '*' 
+      password: '*'
     }
   })
 })
@@ -128,15 +127,14 @@ test('ironMask: mask multiples differents values', t => {
 
   const maskedObject = mask(object)
 
-  t.deepEqual(maskedObject, { 
-    password: '*', 
+  t.deepEqual(maskedObject, {
+    password: '*',
     url: '*',
     dashboard: {
-      url: '*' 
+      url: '*'
     }
   })
 })
-
 
 test('ironMask: mask property with non-valid values', t => {
   const mask = ironMask.create({
@@ -150,7 +148,7 @@ test('ironMask: mask property with non-valid values', t => {
   const object = {
     password: undefined,
     user: {
-      password: null,
+      password: null
     },
     creditCard: {
       password: {}
@@ -161,7 +159,7 @@ test('ironMask: mask property with non-valid values', t => {
   }
 
   const maskedObject = mask(object)
-  
+
   t.deepEqual(maskedObject, {
     password: undefined,
     user: {
