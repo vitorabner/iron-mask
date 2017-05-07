@@ -1,7 +1,7 @@
 const { test } = require('ava')
 const ironMask = require('../src/iron-mask')
 
-test('ironMask: using a string as regex', t => {
+test('using a string as regex', t => {
   const mask = ironMask.create({
     url: {
       paths: ['name'],
@@ -17,7 +17,7 @@ test('ironMask: using a string as regex', t => {
   t.deepEqual(maskedObject, { name: 'Batman' })
 })
 
-test('ironMask: mask url using a replacer function', t => {
+test('mask url using a replacer function', t => {
   const mask = ironMask.create({
     url: {
       paths: ['url', 'save.url'],
@@ -43,7 +43,7 @@ test('ironMask: mask url using a replacer function', t => {
   })
 })
 
-test('ironMask: mask password with a regex', t => {
+test('mask password with a regex', t => {
   const mask = ironMask.create({
     password: {
       paths: ['password'],
@@ -57,7 +57,7 @@ test('ironMask: mask password with a regex', t => {
   t.deepEqual(maskedObject, { password: '*' })
 })
 
-test('ironMask: mask password from an object without this property', t => {
+test('mask password from an object without this property', t => {
   const mask = ironMask.create({
     password: {
       paths: ['password'],
@@ -71,7 +71,7 @@ test('ironMask: mask password from an object without this property', t => {
   t.deepEqual(maskedObject, object)
 })
 
-test('ironMask: mask password value in differents paths', t => {
+test('mask password value in differents paths', t => {
   const mask = ironMask.create({
     password: {
       paths: ['password', 'user.password', 'creditCard.password'],
@@ -103,7 +103,7 @@ test('ironMask: mask password value in differents paths', t => {
   })
 })
 
-test('ironMask: mask multiples differents values', t => {
+test('mask multiples differents values', t => {
   const mask = ironMask.create({
     password: {
       paths: ['password'],
@@ -136,7 +136,7 @@ test('ironMask: mask multiples differents values', t => {
   })
 })
 
-test('ironMask: mask property with non-valid values', t => {
+test('mask property with non-valid values', t => {
   const mask = ironMask.create({
     password: {
       paths: ['password', 'user.password', 'creditCard.password', 'debitCard', 'cvv', 'age'],
@@ -172,4 +172,49 @@ test('ironMask: mask property with non-valid values', t => {
     cvv: '*',
     age: 34
   })
+})
+
+test('try to mask a nonexistent property with a regex', t => {
+  const mask = ironMask.create({
+    password: {
+      paths: ['body.api_key.test'],
+      pattern: /\w.*/g,
+      replacer: '*'
+    }
+  })
+
+  const object = { body: 'Cannot Post' }
+  const maskedObject = mask(object)
+
+  t.deepEqual(maskedObject, object)
+})
+
+test('try to mask an empty object', t => {
+  const mask = ironMask.create({
+    password: {
+      paths: ['body.api_key.test'],
+      pattern: /\w.*/g,
+      replacer: '*'
+    }
+  })
+
+  const object = 'object'
+  const maskedObject = mask(object)
+
+  t.deepEqual(maskedObject, object)
+})
+
+test('try to mask a string', t => {
+  const mask = ironMask.create({
+    password: {
+      paths: ['body.api_key.test'],
+      pattern: /\w.*/g,
+      replacer: '*'
+    }
+  })
+
+  const string = 'Cannot Post'
+  const maskedObject = mask(string)
+
+  t.deepEqual(maskedObject, string)
 })

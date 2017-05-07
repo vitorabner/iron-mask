@@ -13,8 +13,9 @@ const applyMaskSteps = (maskSteps, object) => (
 )
 
 const maskObject = regexList => json => {
+  if (!R.is(Object, json)) return json
   const maskSteps = regexList.map(regex => buildMaskStep(R.pick(regex.root, json))(regex))
-  const filteredMaskSteps = maskSteps.filter(step => !R.isEmpty(step))
+  const filteredMaskSteps = maskSteps.filter(step => !R.isEmpty(step) && !R.isNil(step.value))
   return applyMaskSteps(filteredMaskSteps, json)
 }
 
